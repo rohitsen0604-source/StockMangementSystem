@@ -1,6 +1,6 @@
-<?php require_once('./../../config.php') ?>
+<?php require_once(__DIR__ . '/../../config.php'); ?>
 <?php 
- $qry = $conn->query("SELECT * FROM `supplier_list` where  id = '{$_GET['id']}' ");
+ $qry = $conn->query("SELECT i.*,s.name as supplier FROM `item_list` i inner join supplier_list s on i.supplier_id = s.id where  i.id = '{$_GET['id']}' ");
  if($qry->num_rows > 0){
      foreach($qry->fetch_assoc() as $k => $v){
          $$k=$v;
@@ -19,14 +19,14 @@
                 <div class="col-12">
                     
                     <dl>
-                        <dt class="text-info">Name:</dt>
+                        <dt class="text-info">Item Name:</dt>
                         <dd class="pl-3"><?php echo $name ?></dd>
-                        <dt class="text-info">Address:</dt>
-                        <dd class="pl-3"><?php echo isset($address) ? $address : '' ?></dd>
-                        <dt class="text-info">Contact Person:</dt>
-                        <dd class="pl-3"><?php echo isset($cperson) ? $cperson : '' ?></dd>
-                        <dt class="text-info">Contact #:</dt>
-                        <dd class="pl-3"><?php echo isset($contact) ? $contact : '' ?></dd>
+                        <dt class="text-info">Description:</dt>
+                        <dd class="pl-3"><?php echo isset($description) ? $description : '' ?></dd>
+                        <dt class="text-info">Cost:</dt>
+                        <dd class="pl-3"><?php echo isset($cost) ? number_format($cost,2) : '' ?></dd>
+                        <dt class="text-info">Supplier:</dt>
+                        <dd class="pl-3"><?php echo isset($supplier) ? $supplier : '' ?></dd>
                         <dt class="text-info">Status:</dt>
                         <dd class="pl-3">
                             <?php if($status == 1): ?>

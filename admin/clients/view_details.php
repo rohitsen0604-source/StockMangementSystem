@@ -1,4 +1,4 @@
-<?php require_once('./../../config.php') ?>
+<?php require_once(__DIR__ . '/../../config.php'); ?>
 <?php 
  $qry = $conn->query("SELECT *,concat(lastname,', ',firstname,' ', middlename) as name FROM `users` where  id = '{$_GET['id']}' ");
  if($qry->num_rows > 0){
