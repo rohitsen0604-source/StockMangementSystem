@@ -51,3 +51,4 @@ EXPOSE 80
 
 # Run entrypoint script
 CMD ["/var/www/html/start.sh"]
+
